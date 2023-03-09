@@ -19,6 +19,6 @@ from CarsApp.views import index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('mostrar-index', index, name = "index"),
+    path('', index, name = "index"),
 ]
 
