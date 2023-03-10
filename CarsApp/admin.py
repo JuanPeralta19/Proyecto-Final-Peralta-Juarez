@@ -1,3 +1,6 @@
 from django.contrib import admin
+from CarsApp.models import Americano, Europeo, Japones
 
-# Register your models here.
+admin.site.register(Americano)
+admin.site.register(Europeo)
+admin.site.register(Japones)
