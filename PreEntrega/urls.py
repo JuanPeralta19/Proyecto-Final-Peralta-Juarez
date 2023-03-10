@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import index
+from CarsApp.views import index, template_herencia
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = "index"),
+    path('otro-template/', template_herencia, name="template_01"),
 ]
 
