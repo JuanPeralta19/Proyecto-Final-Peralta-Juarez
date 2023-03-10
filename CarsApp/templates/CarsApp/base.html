@@ -88,7 +88,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'template_01' %}">Link</a>
+            <a class="nav-link" href="{% url 'Admin de vehiculos' %}">Link</a>
           <!-- </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -105,8 +105,8 @@
             <a class="nav-link disabled">Link</a>
           </li> -->
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form action="{% url 'Buscar vehiculo' %}" class="d-flex" role="search">
+          <input class="form-control me-2" name="criterio" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

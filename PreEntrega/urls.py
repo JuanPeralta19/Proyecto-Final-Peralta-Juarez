@@ -15,11 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import index, template_herencia
+from CarsApp.views import index, template_herencia, mostrar_vehiculos, agregar_vehiculos, buscar_vehiculo
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = "index"),
-    path('otro-template/', template_herencia, name="template_01"),
+    path('Vehiculos/', mostrar_vehiculos, name="Admin de vehiculos"),
+    path('Vehiculos/Agregar', agregar_vehiculos, name="Vehiculos agregados"),
+    path('Vehiculos/Buscar', buscar_vehiculo, name="Buscar vehiculo"),
+    
 ]
 
