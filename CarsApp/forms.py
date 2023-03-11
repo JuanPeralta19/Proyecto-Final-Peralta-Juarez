@@ -13,5 +13,6 @@ class EuropeoForm(forms.ModelForm):
 
 class JaponesForm(forms.ModelForm):
     class Meta:
-        model = Europeo
+        model = Japones
         fields = '__all__'
+        

@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import index, template_herencia, mostrar_vehiculos_americanos, agregar_vehiculos_americanos,buscar_vehiculo, mostrar_vehiculos_europeos,mostrar_vehiculos_japoneses
+from CarsApp.views import index, template_herencia, mostrar_vehiculos_americanos, agregar_vehiculos_americanos,buscar_vehiculo, mostrar_vehiculos_europeos, agregar_vehiculo_europeo, mostrar_vehiculo_japones, agregar_vehiculo_japones
     
 
 urlpatterns = [
@@ -25,7 +25,9 @@ urlpatterns = [
     path('Vehiculos/Americanos/Agregar', agregar_vehiculos_americanos, name="Vehiculos americanos agregados"),
     path('Vehiculos/Americanos/Buscar', buscar_vehiculo, name="Buscar vehiculo"),
     path('Vehiculos/Europeos',mostrar_vehiculos_europeos, name= "Admin de vehiculos europeos"),
-    path('Vehiculos/Japoneses',mostrar_vehiculos_japoneses, name= "Admin de vehiculos japoneses"),
+    path('Vehiculos/Europeos/Agregar',agregar_vehiculo_europeo, name= "Vehiculos europeros agregados"),
+    path('Vehiculos/Japoneses',mostrar_vehiculo_japones, name= "Admin de vehiculos japoneses"),
+    path('Vehiculos/Japoneses/Agregar',agregar_vehiculo_japones, name="Vehiculos japoneses agregados"),
     
 ]
 

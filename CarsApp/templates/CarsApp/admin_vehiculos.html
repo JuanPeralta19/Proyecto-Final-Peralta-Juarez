@@ -5,7 +5,7 @@
 
 
 {% if form %}
-<h1>Administracion de vehiculos:</h1>
+<h1>Lista de vehiculos Americanos:</h1>
     <form action="{% url 'Vehiculos americanos agregados' %}" method="post">
         {% csrf_token %}
         {{form.as_p}}

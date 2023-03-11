@@ -5,8 +5,8 @@
 
 
 {% if form %}
-<h1>Administracion de vehiculos:</h1>
-    <form action="{% url 'Admin de vehiculos europeos' %}" method="post">
+<h1>Lista de vehiculos Europeos:</h1>
+    <form action="{% url 'Vehiculos europeros agregados' %}" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Agregar">
