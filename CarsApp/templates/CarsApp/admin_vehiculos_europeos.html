@@ -6,7 +6,7 @@
 
 {% if form %}
 <h1>Administracion de vehiculos:</h1>
-    <form action="{% url 'Vehiculos americanos agregados' %}" method="post">
+    <form action="{% url 'Admin de vehiculos europeos' %}" method="post">
         {% csrf_token %}
         {{form.as_p}}
         <input type="submit" value="Agregar">
@@ -15,8 +15,8 @@
 <h1>Resultados de la busqueda:</h1>
 {% endif %}
     <ul>
-        {% for americano in americanos %}
-        <li>{{americano.id}} - {{americano.marca_de_vehiculo}} - {{americano.modelo_de_vehiculo}} - {{americano.motor}}</li>
+        {% for europeo in europeos %}
+        <li>{{europeo.id}} - {{europeo.marca_de_vehiculo}} - {{europeo.modelo_de_vehiculo}} - {{europeo.motor}}</li>
         {% endfor %}
     </ul>
 
