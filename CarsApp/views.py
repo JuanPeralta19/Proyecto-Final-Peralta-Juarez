@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from CarsApp.models import Americano, Europeo, Japones
-from CarsApp.forms import AmericanoForm, EuropeoForm # JaponesForm
+from CarsApp.forms import AmericanoForm, EuropeoForm, JaponesForm
 
 def index(request):
     return render(request,"CarsApp/index.html")
@@ -60,9 +60,18 @@ def buscar_vehiculo(request):
 
 def mostrar_vehiculos_japoneses(request):
       context = {
-          #"form": JaponesForm,
+          "form": JaponesForm,
           "japones": Japones.objects.all(),
       }
       return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)
+
+def agregar_vehiculo_japones(request):
+    japones_form = JaponesForm(request.POST)
+    japones_form.save()
+    context = {
+        "form":JaponesForm(),
+        "Japones": Japones.objects.all(),
+    }
+    return render(request,"CarsApp/admin_vehiculos_japoneses.html", context) 
 
 
