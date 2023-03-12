@@ -24,7 +24,7 @@ def agregar_vehiculos_americanos(request):
     }
     return render(request,"CarsApp/admin_vehiculos.html",context)
 
-def buscar_vehiculo(request):
+def buscar_vehiculos_americanos(request):
     criterio = request.GET.get("criterio")
     context = {
         "americanos": Americano.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
@@ -49,10 +49,10 @@ def agregar_vehiculo_europeo(request):
     }
     return render(request,"CarsApp/admin_vehiculos_europeos.html", context)
 
-def buscar_vehiculo(request):
-    criterio_europeo = request.GET.get("criterio_europeo")
+def buscar_vehiculo_europeo(request):
+    criterio = request.GET.get("criterio")
     context = {
-        "europeos": Europeo.objects.filter(marca_de_vehiculo__icontains=criterio_europeo).all(),
+        "europeos": Europeo.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
     }
     return render(request, "CarsApp/admin_vehiculos_europeos.html",context)
 
@@ -74,13 +74,9 @@ def agregar_vehiculo_japones(request):
     }
     return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)
 
-    
-
-
-# def agregar_vehiculo_japones(request):
-#     japones_form = JaponesForm(request.POST)
-#     japones_form.save()
-#     context = {
-#         "form" : JaponesForm(),
-#     }
-#     return render(request,"CarsApp/admin_vehiculos_japoneses.html", context)
+def buscar_vehiculo_japones(request):
+    criterio_japones = request.GET.get("criterio_japones")
+    context = {
+        "japones": Japones.objects.filter(marca_vehiculo__icontains=criterio_japones).all(),
+    }
+    return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)  
