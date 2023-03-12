@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import index, template_herencia, mostrar_vehiculos_americanos, agregar_vehiculos_americanos,buscar_vehiculos_americanos, mostrar_vehiculos_europeos, agregar_vehiculo_europeo, buscar_vehiculo_europeo, mostrar_vehiculo_japones, agregar_vehiculo_japones
+from CarsApp.views import index, mostrar_vehiculos_americanos, agregar_vehiculos_americanos, mostrar_vehiculos_europeos, agregar_vehiculo_europeo, mostrar_vehiculo_japones, agregar_vehiculo_japones, buscar_vehiculos
     
 
 urlpatterns = [
@@ -23,12 +23,11 @@ urlpatterns = [
     path('', index, name = "index"),
     path('Vehiculos/Americanos', mostrar_vehiculos_americanos, name="Admin de vehiculos americanos"),
     path('Vehiculos/Americanos/Agregar', agregar_vehiculos_americanos, name="Vehiculos americanos agregados"),
-    path('Vehiculos/Americanos/Buscar', buscar_vehiculos_americanos, name="Buscar vehiculos americanos"),
     path('Vehiculos/Europeos',mostrar_vehiculos_europeos, name= "Admin de vehiculos europeos"),
     path('Vehiculos/Europeos/Agregar',agregar_vehiculo_europeo, name= "Vehiculos europeros agregados"),
-    path('Vehiculos/Europeos/Buscar', buscar_vehiculo_europeo, name= "Buscar vehiculos europeos"),
     path('Vehiculos/Japoneses',mostrar_vehiculo_japones, name= "Admin de vehiculos japoneses"),
     path('Vehiculos/Japoneses/Agregar',agregar_vehiculo_japones, name="Vehiculos japoneses agregados"),
+    path('Vehiculos/Americanos/Buscar',buscar_vehiculos, name="Buscar vehiculos Amricanos"),
     
 ]
 

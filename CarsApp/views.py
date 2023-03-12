@@ -5,9 +5,6 @@ from CarsApp.forms import AmericanoForm, EuropeoForm, JaponesForm
 def index(request):
     return render(request,"CarsApp/index.html")
 
-def template_herencia(request):
-    americanos = Americano.objects.all()
-    return render(request, "CarsApp/otro-template.html", {"americanos": americanos})
 
 def mostrar_vehiculos_americanos(request):
     context = {
@@ -23,13 +20,6 @@ def agregar_vehiculos_americanos(request):
         "americanos":Americano.objects.all()
     }
     return render(request,"CarsApp/admin_vehiculos.html",context)
-
-def buscar_vehiculos_americanos(request):
-    criterio = request.GET.get("criterio")
-    context = {
-        "americanos": Americano.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
-    }
-    return render(request, "CarsApp/admin_vehiculos.html",context)
 
 #VEHICULOS EUROPEOS
 
@@ -49,13 +39,6 @@ def agregar_vehiculo_europeo(request):
     }
     return render(request,"CarsApp/admin_vehiculos_europeos.html", context)
 
-def buscar_vehiculo_europeo(request):
-    criterio = request.GET.get("criterio")
-    context = {
-        "europeos": Europeo.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
-    }
-    return render(request, "CarsApp/admin_vehiculos_europeos.html",context)
-
 # VEHICULOS JAPONESES
 
 def mostrar_vehiculo_japones(request):
@@ -74,9 +57,11 @@ def agregar_vehiculo_japones(request):
     }
     return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)
 
-def buscar_vehiculo_japones(request):
-    criterio_japones = request.GET.get("criterio_japones")
+# BUSCADOR DE VEHICULOS, AMERICANO SOLAMENTE
+
+def buscar_vehiculos(request):
+    criterio = request.GET.get("criterio")
     context = {
-        "japones": Japones.objects.filter(marca_vehiculo__icontains=criterio_japones).all(),
+        "americanos": Americano.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
     }
-    return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)  
+    return render(request,"CarsApp/admin_vehiculos.html", context)
