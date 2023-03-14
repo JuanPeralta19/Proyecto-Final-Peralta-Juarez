@@ -21,6 +21,7 @@ Sitio web de fanaticos de autos donde podran subir su vehiculo favorito ingresan
 - [x] 3 clases en models.
 - [x] Formulario para insertar datos en cada una de las clases
 - [x] Formulario que accede y trae info de la base de datos.
+- [x] Archivo seed_data.py con datos para testear el sitio web.
 
 ### Implemetnaciones a futuro
 ---
