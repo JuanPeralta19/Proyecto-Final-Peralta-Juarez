@@ -1,4 +1,4 @@
-#  Sitio Web de Python Djando AutosPedia.comm 
+#  Sitio Web de Python Djando AutosPedia.com 
 ---
 [![N|Solid](https://www.milinux.es/wp-content/uploads/2019/01/python-256x256.png)](https://nodesource.com/products/nsolid) [![N|Solid](https://cdn.iconscout.com/icon/free/png-256/django-11-1175036.png)](https://nodesource.com/products/nsolid) 
 
