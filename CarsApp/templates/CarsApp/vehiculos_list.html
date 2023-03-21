@@ -7,8 +7,8 @@
     {% for Vehiculos in vehiculos %}
     <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo_usd}}
         <a href="{% url 'vehiculos-detail' Vehiculos.id %}">Detalle</a>
-        <a href="#">Actualizar</a>
-        <a href="#">Borrar</a>
+        <a href="{% url 'vehiculos-update' Vehiculos.id %}">Actualizar</a>
+        <a href="{% url 'vehiculos-delete' Vehiculos.id %}">Borrar</a>
     </li>
     {% endfor %}
 </ul>

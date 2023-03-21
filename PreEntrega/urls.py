@@ -15,19 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import (index, mostrar_vehiculos, VehiculosList, VehiculosDetail, 
-                           agregar_vehiculos, buscar_vehiculos)
+from CarsApp.views import (index, VehiculosList, VehiculosDetail, VehiculosUpdate, VehiculosDelete, 
+                           VehiculosCreate, VehiculosSearch, Login, SignUp, Logout, agregar_vehiculos, buscar_vehiculos)
     
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = "index"),
-    path('Vehiculos/', mostrar_vehiculos, name="Admin de vehiculos americanos"),
     path('Vehiculos/Agregar', agregar_vehiculos, name="Vehiculos americanos agregados"),
     path('Vehiculos/Buscar',buscar_vehiculos, name="Buscar vehiculos Amricanos"),
     path('Vehiculos/List', VehiculosList.as_view(), name = "vehiculos-list"),
     path('Vehiculos/<pk>/Detail', VehiculosDetail.as_view(), name = "vehiculos-detail"),
-    
+    path('Vehiculos/<pk>/Update', VehiculosUpdate.as_view(), name = "vehiculos-update"),
+    path('Vehiculos/<pk>/Delete', VehiculosDelete.as_view(), name = "vehiculos-delete"),
+    path('Vehiculos/Create', VehiculosCreate.as_view(), name = "vehiculos-create"),
+    path('Vehiculos/Search', VehiculosSearch.as_view(), name = "vehiculos-search"),
+    path('login/', Login.as_view(), name = "login"),
+    path('signup/', SignUp.as_view(), name = "signup"),
+    path('logout/', Logout.as_view(), name = "logout"),
 
 
 ]

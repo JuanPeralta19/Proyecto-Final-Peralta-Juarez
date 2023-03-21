@@ -5,8 +5,8 @@
 
 <ul>
     <li>{{vehiculo.marca_de_vehiculo}} - {{vehiculo.modelo_de_vehiculo}} - {{vehiculo.valor_vehiculo_usd}}
-        <a href="#">Actualizar</a>
-        <a href="#">Borrar</a>
+        <a href="{% url 'vehiculos-update' vehiculo.id %}">Actualizar</a>
+        <a href="{% url 'vehiculos-delete' vehiculo.id %}">Borrar</a>
     </li>
 </ul>
 {% endblock %}
