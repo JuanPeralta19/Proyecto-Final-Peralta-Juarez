@@ -1,0 +1,12 @@
+{% extends "CarsApp/base.html" %}
+{% load static %}
+
+{% block main %}
+
+<ul>
+    <li>{{vehiculo.marca_de_vehiculo}} - {{vehiculo.modelo_de_vehiculo}} - {{vehiculo.valor_vehiculo_usd}}
+        <a href="#">Actualizar</a>
+        <a href="#">Borrar</a>
+    </li>
+</ul>
+{% endblock %}

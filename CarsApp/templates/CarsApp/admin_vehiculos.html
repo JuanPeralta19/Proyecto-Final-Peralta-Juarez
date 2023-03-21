@@ -15,8 +15,8 @@
 <h1>Resultados de la busqueda:</h1>
 {% endif %}
     <ul>
-        {% for americano in americanos %}
-        <li>{{americano.marca_de_vehiculo}} - {{americano.modelo_de_vehiculo}} - {{americano.motor}}</li>
+        {% for Vehiculos in Vehiculos %}
+        <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo_usd}}</li>
         {% endfor %}
     </ul>
 

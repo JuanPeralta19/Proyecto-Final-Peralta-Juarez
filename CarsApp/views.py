@@ -1,67 +1,38 @@
 from django.shortcuts import render
-from CarsApp.models import Americano, Europeo, Japones
-from CarsApp.forms import AmericanoForm, EuropeoForm, JaponesForm
+from CarsApp.models import vehiculos
+from CarsApp.forms import vehiculosForm
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
 
 def index(request):
     return render(request,"CarsApp/index.html")
 
 
-def mostrar_vehiculos_americanos(request):
+def mostrar_vehiculos(request):
     context = {
-        "form":AmericanoForm(),
-        "americanos":Americano.objects.all()}
+        "form":vehiculosForm(),
+        "vehiculos":vehiculos.objects.all()}
     return render(request, "CarsApp/admin_vehiculos.html", context)
 
-def agregar_vehiculos_americanos(request):
-    americano_form = AmericanoForm(request.POST)
-    americano_form.save()
+def agregar_vehiculos(request):
+    vehiculos_form = vehiculosForm(request.POST)
+    vehiculos_form.save()
     context = {
-        "form": AmericanoForm(),
-        "americanos":Americano.objects.all()
+        "form": vehiculosForm(),
+        "vehiculos":vehiculos.objects.all()
     }
     return render(request,"CarsApp/admin_vehiculos.html",context)
-
-#VEHICULOS EUROPEOS
-
-def mostrar_vehiculos_europeos(request):
-      context = {
-          "form": EuropeoForm,
-          "europeos": Europeo.objects.all(),
-      }
-      return render(request, "CarsApp/admin_vehiculos_europeos.html", context)
-
-def agregar_vehiculo_europeo(request):
-    europeo_form = EuropeoForm(request.POST)
-    europeo_form.save()
-    context = {
-        "form":EuropeoForm(),
-        "europeos": Europeo.objects.all(),
-    }
-    return render(request,"CarsApp/admin_vehiculos_europeos.html", context)
-
-# VEHICULOS JAPONESES
-
-def mostrar_vehiculo_japones(request):
-    context = {
-        "form": JaponesForm,
-        "japones": Japones.objects.all(),
-    }
-    return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)
-
-def agregar_vehiculo_japones(request):
-    japones_form = JaponesForm(request.POST)
-    japones_form.save()
-    context = {
-        "form":JaponesForm(),
-        "japones": Japones.objects.all(),
-    }
-    return render(request, "CarsApp/admin_vehiculos_japoneses.html", context)
-
-# BUSCADOR DE VEHICULOS, AMERICANO SOLAMENTE
 
 def buscar_vehiculos(request):
     criterio = request.GET.get("criterio")
     context = {
-        "americanos": Americano.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
+        "vehiculos": vehiculos.objects.filter(marca_de_vehiculo__icontains=criterio).all(),
     }
     return render(request,"CarsApp/admin_vehiculos.html", context)
+
+class VehiculosList(ListView):
+    model = vehiculos
+    context_object_name = "vehiculos"
+
+class VehiculosDetail(DetailView):
+    model = vehiculos
+    context_object_name = "vehiculo"

@@ -1,0 +1,15 @@
+{% extends "CarsApp/base.html" %}
+{% load static %}
+
+{% block main %}
+
+<ul>
+    {% for Vehiculos in vehiculos %}
+    <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo_usd}}
+        <a href="{% url 'vehiculos-detail' Vehiculos.id %}">Detalle</a>
+        <a href="#">Actualizar</a>
+        <a href="#">Borrar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

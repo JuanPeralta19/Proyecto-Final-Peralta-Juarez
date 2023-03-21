@@ -15,19 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from CarsApp.views import index, mostrar_vehiculos_americanos, agregar_vehiculos_americanos, mostrar_vehiculos_europeos, agregar_vehiculo_europeo, mostrar_vehiculo_japones, agregar_vehiculo_japones, buscar_vehiculos
+from CarsApp.views import (index, mostrar_vehiculos, VehiculosList, VehiculosDetail, 
+                           agregar_vehiculos, buscar_vehiculos)
     
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = "index"),
-    path('Vehiculos/Americanos', mostrar_vehiculos_americanos, name="Admin de vehiculos americanos"),
-    path('Vehiculos/Americanos/Agregar', agregar_vehiculos_americanos, name="Vehiculos americanos agregados"),
-    path('Vehiculos/Europeos',mostrar_vehiculos_europeos, name= "Admin de vehiculos europeos"),
-    path('Vehiculos/Europeos/Agregar',agregar_vehiculo_europeo, name= "Vehiculos europeros agregados"),
-    path('Vehiculos/Japoneses',mostrar_vehiculo_japones, name= "Admin de vehiculos japoneses"),
-    path('Vehiculos/Japoneses/Agregar',agregar_vehiculo_japones, name="Vehiculos japoneses agregados"),
-    path('Vehiculos/Americanos/Buscar',buscar_vehiculos, name="Buscar vehiculos Amricanos"),
+    path('Vehiculos/', mostrar_vehiculos, name="Admin de vehiculos americanos"),
+    path('Vehiculos/Agregar', agregar_vehiculos, name="Vehiculos americanos agregados"),
+    path('Vehiculos/Buscar',buscar_vehiculos, name="Buscar vehiculos Amricanos"),
+    path('Vehiculos/List', VehiculosList.as_view(), name = "vehiculos-list"),
+    path('Vehiculos/<pk>/Detail', VehiculosDetail.as_view(), name = "vehiculos-detail"),
     
+
+
 ]
 
