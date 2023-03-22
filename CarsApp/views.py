@@ -5,6 +5,7 @@ from django.views.generic import ListView, DetailView, UpdateView, CreateView, D
 from django.urls import reverse_lazy
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 def index(request):
     return render(request,"CarsApp/index.html")
@@ -29,23 +30,34 @@ class VehiculosList(ListView):
     model = vehiculos
     context_object_name = "vehiculos"
 
+class VehiculosMineList(LoginRequiredMixin, VehiculosList):
+    def get_queryset(self):
+        return vehiculos.objects.filter(publicador = self.request.user.id).all()
+
 class VehiculosDetail(DetailView):
     model = vehiculos
     context_object_name = "vehiculo"
 
-class VehiculosUpdate(UpdateView):
+class PermitsOnlyOwners(UserPassesTestMixin):
+    def test_func(self):
+        user_id = self.request.user.id
+        vehiculos_id = self.kwargs.get("pk")
+        return vehiculos.objects.filter(publicador = user_id, id = vehiculos_id).exists()
+     
+class VehiculosUpdate(LoginRequiredMixin,PermitsOnlyOwners, UpdateView):
     model = vehiculos
-    success_url = reverse_lazy("vehiculos-list")
+    success_url = reverse_lazy("vehiculos-mine")
     fields = "__all__"
 
-class VehiculosDelete(DeleteView):
+class VehiculosDelete(LoginRequiredMixin,PermitsOnlyOwners, DeleteView):
     model = vehiculos
     context_object_name = "vehiculo"
     success_url = reverse_lazy("vehiculos-list")
 
-class VehiculosCreate(CreateView):
+   
+class VehiculosCreate(LoginRequiredMixin, CreateView):
     model = vehiculos
-    success_url = reverse_lazy("vehiculos-list")
+    success_url = reverse_lazy("vehiculos-mine")
     fields = "__all__"
 
 class VehiculosSearch(ListView):

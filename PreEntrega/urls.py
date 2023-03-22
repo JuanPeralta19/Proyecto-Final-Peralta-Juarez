@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from CarsApp.views import (index, VehiculosList, VehiculosDetail, VehiculosUpdate, VehiculosDelete, 
-                           VehiculosCreate, VehiculosSearch, Login, SignUp, Logout, agregar_vehiculos, buscar_vehiculos)
+                           VehiculosCreate, VehiculosSearch, VehiculosMineList, Login, SignUp, Logout, agregar_vehiculos, buscar_vehiculos)
     
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('Vehiculos/Agregar', agregar_vehiculos, name="Vehiculos americanos agregados"),
     path('Vehiculos/Buscar',buscar_vehiculos, name="Buscar vehiculos Amricanos"),
     path('Vehiculos/List', VehiculosList.as_view(), name = "vehiculos-list"),
+    path('Vehiculos/Mine/List', VehiculosMineList.as_view(), name = "vehiculos-mine"),
     path('Vehiculos/<pk>/Detail', VehiculosDetail.as_view(), name = "vehiculos-detail"),
     path('Vehiculos/<pk>/Update', VehiculosUpdate.as_view(), name = "vehiculos-update"),
     path('Vehiculos/<pk>/Delete', VehiculosDelete.as_view(), name = "vehiculos-delete"),

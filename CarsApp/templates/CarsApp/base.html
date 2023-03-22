@@ -89,17 +89,19 @@
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'vehiculos-list' %}">Vehiculos Publicados</a>
+            <a class="nav-link" href="{% url 'vehiculos-list' %}">Vehiculos</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'vehiculos-mine' %}">Mis Publicaciones</a>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{% url 'vehiculos-create' %}">Crear Publicación</a>
           </li>
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="#">Vacio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Vacio</a>
-              </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">{{user.username}}|Salir</a>
+          </li>
+          {% else %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Cuenta
@@ -107,13 +109,11 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{% url 'login' %}">Ingresar</a></li>
               <li><a class="dropdown-item" href="{% url 'signup' %}">Registrarme</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">{{user.username}}|Salir</a></li>
+              <!-- <li><hr class="dropdown-divider"></li> -->
+              <!-- <li><a class="dropdown-item" href="#"></a></li> -->
             </ul>
-          <!-- </li>
-          <li class="nav-item">
-            <a class="nav-link disabled">Link</a>
-          </li> -->
+          </li>
+          {% endif %}
         </ul>
         <form action="{% url 'vehiculos-search' %}" class="d-flex" role="search">
           <input class="form-control me-2" name="criterio" type="search" placeholder="Buscar vehículos" aria-label="Search">

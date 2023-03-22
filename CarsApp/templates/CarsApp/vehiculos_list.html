@@ -5,10 +5,12 @@
 
 <ul>
     {% for Vehiculos in vehiculos %}
-    <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo_usd}}
+    <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo}}
         <a href="{% url 'vehiculos-detail' Vehiculos.id %}">Detalle</a>
-        <a href="{% url 'vehiculos-update' Vehiculos.id %}">Actualizar</a>
-        <a href="{% url 'vehiculos-delete' Vehiculos.id %}">Borrar</a>
+        {% if user.is_authenticated and user.id == Vehiculos.publicador.id %}
+            <a href="{% url 'vehiculos-update' Vehiculos.id %}">Actualizar</a>
+            <a href="{% url 'vehiculos-delete' Vehiculos.id %}">Borrar</a>
+        {% endif %}
     </li>
     {% endfor %}
 </ul>
