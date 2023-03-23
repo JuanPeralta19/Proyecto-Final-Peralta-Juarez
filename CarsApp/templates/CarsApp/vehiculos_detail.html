@@ -3,12 +3,14 @@
 
 {% block main %}
 
-<ul>
-    <li>{{vehiculo.marca_de_vehiculo}} - {{vehiculo.modelo_de_vehiculo}} - {{vehiculo.valor_vehiculo}}
-        {% if user.is_authenticated and user.id == vehiculo.publicador.id %}
-            <a href="{% url 'vehiculos-update' vehiculo.id %}">Actualizar</a>
-            <a href="{% url 'vehiculos-delete' vehiculo.id %}">Borrar</a>
-        {% endif %}
-    </li>
-</ul>
+<h1>Detalles del vehiculo:</h1>
+<div class="d-flex justify-content-center">
+    <div class="col col-8" style="text-align: center;">
+        <h1 class="mt-5">{{ vehiculo.marca_de_vehiculo }}</h1>
+        <p><img height="256px" src="{{vehiculo.imagen_url}}"></p>
+        <p class="lead">{{ vehiculo.modelo_de_vehiculo}}</p>
+        <p class="lead">{{ vehiculo.descripcion}}</p>
+        <p class="lead">{{ vehiculo.valor_vehiculo}}</p>
+    </div>
+</div>
 {% endblock %}

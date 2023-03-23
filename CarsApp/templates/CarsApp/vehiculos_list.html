@@ -1,17 +1,29 @@
-{% extends "CarsApp/base.html" %}
+{% extends "CarsApp/index.html" %}
 {% load static %}
 
-{% block main %}
+{% block cards %}
 
-<ul>
-    {% for Vehiculos in vehiculos %}
-    <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo}}
-        <a href="{% url 'vehiculos-detail' Vehiculos.id %}">Detalle</a>
-        {% if user.is_authenticated and user.id == Vehiculos.publicador.id %}
-            <a href="{% url 'vehiculos-update' Vehiculos.id %}">Actualizar</a>
-            <a href="{% url 'vehiculos-delete' Vehiculos.id %}">Borrar</a>
-        {% endif %}
-    </li>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    {% for vehiculo in vehiculos %}
+        <div class="col">
+            <div class="card shadow-sm">
+            <a style="text-decoration: none;" href="{% url 'vehiculos-detail' vehiculo.id %}">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{vehiculo.imagen_url}}"></img>
+            </a>
+                <div class="card-body">
+                <p class="text-dark">{{vehiculo.descripcion}}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    {% if user.is_authenticated and user.id == vehiculo.publicador.id %}
+                    <a href="{% url 'vehiculos-delete' vehiculo.id %}" type="button" class="btn btn-sm btn-outline-secondary">Borrar</a>
+                    <a href="{% url 'vehiculos-update' vehiculo.id %}" type="button" class="btn btn-sm btn-outline-secondary">Editar</a>
+                    {% endif %} 
+                </div>
+                <small class="text-muted">{{vehiculo.valor_vehiculo}}</small>
+                </div>
+            </div>
+            </div>
+        </div>
     {% endfor %}
-</ul>
+  </div>
 {% endblock %}
