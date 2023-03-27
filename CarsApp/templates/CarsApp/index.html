@@ -23,21 +23,23 @@
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           {% for vehiculo in vehiculos %}
               <div class="col">
-                  <div class="card shadow-sm">
-                  <a style="text-decoration: none;" href="#">
-                      <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{vehiculo.imagen_url}}"></img>
+                  <div class="card shadow-sm bg-dark-subtle">
+                  <a style="text-decoration: none;">
+                      <img class="card-img-top" alt="Card image top" src="{{vehiculo.imagen_url}}"></img>
                   </a>
                       <div class="card-body">
-                      <p class="text-dark">{{vehiculo.descripcion}}</p>
+                      <p class="text-dark">{{vehiculo.marca_de_vehiculo}}</p>
+                      <hr>
+                      <p class="text-dark">{{vehiculo.modelo_de_vehiculo}}</p>
                       <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        {% if user.is_authenticated and user.id == vehiculos.publicador.id %}
-                          <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Borrar</a>
-                          <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Editar</a>
+                        {% if user.is_authenticated and user.id == vehiculo.publicador.id %}
+                          <a href="{% url 'vehiculos-delete' vehiculo.id %}" type="button" class="btn btn-outline-danger btn-sm">Borrar</a>
+                          <a href="{% url 'vehiculos-update' vehiculo.id %}" type="button" class="btn btn-outline-primary btn-sm">Actualizar</a>
                         {% endif %}
-                          <a href="{% url 'vehiculos-detail' vehiculo.id %}" type="button" class="btn btn-sm btn-outline-secondary">Detalles</a>
+                          <a href="{% url 'vehiculos-detail' vehiculo.id %}" type="button" class="btn btn-outline-primary btn-sm">Detalles</a>
                       </div>
-                      <small class="text-muted">{{vehiculo.valor_vehiculo}}</small>
+                      <small class="text-dark">{{vehiculo.valor_vehiculo}}</small>
                       </div>
                   </div>
                   </div>

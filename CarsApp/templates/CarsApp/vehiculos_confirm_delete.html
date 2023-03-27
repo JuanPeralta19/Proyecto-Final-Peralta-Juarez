@@ -7,6 +7,6 @@
     {% csrf_token %}
     {{form.as_p}}
     <input class="btn btn-danger" type="submit" value="Borrar">
-    <a class="btn btn-primary" href="{% url 'vehiculos-mine' %}">Cancelar</a>
+    <a class="btn btn-primary" href="{% url 'index' %}">Cancelar</a>
 </form>
 {% endblock %}

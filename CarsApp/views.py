@@ -37,7 +37,7 @@ class VehiculosUpdate(LoginRequiredMixin ,PermitsOnlyOwners, UpdateView):
 class VehiculosDelete(LoginRequiredMixin, PermitsOnlyOwners, DeleteView):
     model = vehiculos
     context_object_name = "vehiculo"
-    success_url = reverse_lazy("vehiculos-list")
+    success_url = reverse_lazy("index")
 
    
 class VehiculosCreate(LoginRequiredMixin, CreateView):
@@ -66,7 +66,7 @@ class Logout(LogoutView):
 
 class PerfilCreate(LoginRequiredMixin, CreateView):
     model = perfil
-    success_url = reverse_lazy('vehiculos-list')
+    success_url = reverse_lazy('index')
     fields = ['avatar']
 
     def form_valid(self, form):
@@ -75,7 +75,7 @@ class PerfilCreate(LoginRequiredMixin, CreateView):
     
 class PerfilUpdate(UserPassesTestMixin, UpdateView):
     model = perfil
-    success_url = reverse_lazy('vehiculos-list')
+    success_url = reverse_lazy('index')
     fields = ['avatar',]
 
     def test_func(self):

@@ -102,20 +102,31 @@
           <li class="nav-item">
               <a class="nav-link" href="{% url 'vehiculos-create' %}">Crear Publicación</a>
           </li>
-          {% if user.perfil %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'perfil-update' user.perfil.id %}">Actualizar Perfil</a>
-          </li>
-          {% else %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'perfil-create' %}">Crear Perfil</a>
-          </li>
-          {% endif %}
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'mensaje-list' %}">Mensajes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">{{user.username}}|Salir</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Perfil
+            </a>
+            <ul class="dropdown-menu bg-dark-subtle text-emphasis-dark">
+              {% if user.perfil %}
+                <li><a class="dropdown-item" href="{% url 'perfil-update' user.perfil.id %}">Actualizar Avatar</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="{% url 'perfil-create' %}">Crear Avatar</a></li>
+              {% endif %}
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">{{user.username}} |Salir</a></li>
+              <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+            </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Mensajes
+            </a>
+            <ul class="dropdown-menu bg-dark-subtle text-emphasis-dark">
+              <li><a class="dropdown-item" href="{% url 'mensaje-list' %}">Mis mensajes</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'mensaje-create' %}">Enviar mensaje</a></li>
+              
+              <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+            </ul>
           </li>
           {% else %}
           <li class="nav-item dropdown">
