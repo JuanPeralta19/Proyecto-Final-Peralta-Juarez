@@ -79,7 +79,11 @@
 <header>
   <nav class="navbar navbar-expand-lg p-3 mb-2 bg-dark-subtle text-emphasis-dark">
     <div class="container-fluid">
+      {% if user.perfil.avatar_url %}
+      <img src="{{user.perfil.avatar_url}}" width="100" height="100"></img>
+      {% else %}
       <a class="navbar-brand" href="{% url 'index' %}">AutosPedia</a>
+      {% endif %}
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -97,6 +101,18 @@
           </li>
           <li class="nav-item">
               <a class="nav-link" href="{% url 'vehiculos-create' %}">Crear Publicación</a>
+          </li>
+          {% if user.perfil %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'perfil-update' user.perfil.id %}">Actualizar Perfil</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'perfil-create' %}">Crear Perfil</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'mensaje-list' %}">Mensajes</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">{{user.username}}|Salir</a>

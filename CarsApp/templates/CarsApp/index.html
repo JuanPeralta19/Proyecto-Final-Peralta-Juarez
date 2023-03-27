@@ -19,10 +19,32 @@
 
   <div class="album py-5">
     <div class="container">
-
-      {% block cards %} {% endblock %}
+      
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          {% for vehiculo in vehiculos %}
+              <div class="col">
+                  <div class="card shadow-sm">
+                  <a style="text-decoration: none;" href="#">
+                      <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{vehiculo.imagen_url}}"></img>
+                  </a>
+                      <div class="card-body">
+                      <p class="text-dark">{{vehiculo.descripcion}}</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        {% if user.is_authenticated and user.id == vehiculos.publicador.id %}
+                          <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Borrar</a>
+                          <a href="#" type="button" class="btn btn-sm btn-outline-secondary">Editar</a>
+                        {% endif %}
+                          <a href="{% url 'vehiculos-detail' vehiculo.id %}" type="button" class="btn btn-sm btn-outline-secondary">Detalles</a>
+                      </div>
+                      <small class="text-muted">{{vehiculo.valor_vehiculo}}</small>
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          {% endfor %}
+        </div>
     </div>
   </div>
-
 </main>
 {% endblock %}

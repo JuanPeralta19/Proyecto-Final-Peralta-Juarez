@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from CarsApp.views import (index, VehiculosList, VehiculosDetail, VehiculosUpdate, VehiculosDelete, 
-                           VehiculosCreate, VehiculosSearch, VehiculosMineList, Login, SignUp, Logout)
+                           VehiculosCreate, VehiculosSearch, VehiculosMineList, Login, SignUp, Logout, PerfilCreate, PerfilUpdate,
+                           MensajeCreate, MensajeDelete, MensajeList)
 from django.conf import settings
 from django.conf.urls.static import static
     
@@ -34,6 +35,13 @@ urlpatterns = [
     path('login/', Login.as_view(), name = "login"),
     path('signup/', SignUp.as_view(), name = "signup"),
     path('logout/', Logout.as_view(), name = "logout"),
+    path('Perfil/Create', PerfilCreate.as_view(), name="perfil-create"),
+    path('Perfil/<pk>/Update', PerfilUpdate.as_view(), name="perfil-update"),
+    path('Mensaje/Create', MensajeCreate.as_view(), name="mensaje-create"),
+    path('Mensaje/<pk>/Delete', MensajeDelete.as_view(), name = "mensaje-delete"),
+    path('Mensaje/List', MensajeList.as_view(), name = "mensaje-list"),
+
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

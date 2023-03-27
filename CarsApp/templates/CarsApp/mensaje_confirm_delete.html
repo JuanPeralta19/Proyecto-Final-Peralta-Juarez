@@ -1,0 +1,12 @@
+{% extends "CarsApp/base.html" %}
+{% load static %}
+
+{% block main %}
+<p style="margin-top: 10px;">¿Está seguro que quiere borrar el mensaje?</p>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-danger" type="submit" value="Borrar">
+    <a class="btn btn-primary" href="{% url 'mensaje-list' %}">Cancelar</a>
+</form>
+{% endblock %}

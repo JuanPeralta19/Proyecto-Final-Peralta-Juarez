@@ -1,0 +1,16 @@
+{% extends "CarsApp/base.html" %}
+{% load static %}
+
+{% block main %}
+<h1>Mis mensajes:</h1>
+<ul>
+    {% for Mensaje in mensaje %}
+    <li> Mensaje de: {{Mensaje.email}}
+        <br>
+            {{Mensaje.mensaje}}
+        <br>
+        <a href="{% url 'mensaje-delete' Mensaje.id %}">Borrar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
