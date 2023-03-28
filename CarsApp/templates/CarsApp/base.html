@@ -93,7 +93,7 @@
             <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'vehiculos-list' %}">Vehiculos</a>
+            <a class="nav-link" href="{% url 'vehiculos-list' %}">Vehículos</a>
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
@@ -141,6 +141,9 @@
             </ul>
           </li>
           {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'acerca-de-mi' %}">Acerca de mi</a>
+          </li>
         </ul>
         <form action="{% url 'vehiculos-search' %}" class="d-flex" role="search">
           <input class="form-control me-2" name="criterio" type="search" placeholder="Buscar vehículos" aria-label="Search">

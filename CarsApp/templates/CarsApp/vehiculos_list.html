@@ -2,15 +2,29 @@
 {% load static %}
 
 {% block main %}
-<ul>
+<h1><ins>Lista de vehículos:</ins></h1>
+<table class="table bg-dark-subtle text-emphasis-dark table-striped table-sm table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
     {% for Vehiculos in vehiculos %}
-    <li>{{Vehiculos.marca_de_vehiculo}} - {{Vehiculos.modelo_de_vehiculo}} - {{Vehiculos.valor_vehiculo}}
-        <a href="{% url 'vehiculos-detail' Vehiculos.id %}">Detalle</a>
-        {% if user.is_authenticated and user.id == Vehiculos.publicador.id %}
-            <a href="{% url 'vehiculos-update' Vehiculos.id %}">Actualizar</a>
-            <a href="{% url 'vehiculos-delete' Vehiculos.id %}">Borrar</a>
-        {% endif %}
-    </li>
+    <tbody>
+        <tr>
+            <td>{{Vehiculos.marca_de_vehiculo}}</td>
+            <td>{{Vehiculos.modelo_de_vehiculo}}</td>
+            <td>{{Vehiculos.valor_vehiculo}}
+                <a href="{% url 'vehiculos-detail' Vehiculos.id %}" type="button" class="btn btn-outline-primary btn-sm">Detalles</a>
+                {% if user.is_authenticated and user.id == Vehiculos.publicador.id %}
+                    <a href="{% url 'vehiculos-update' Vehiculos.id %}" type="button" class="btn btn-outline-primary btn-sm">Actualizar</a>
+                    <a href="{% url 'vehiculos-delete' Vehiculos.id %}" type="button" class="btn btn-outline-danger btn-sm">Borrar</a>
+                {% endif %}
+            </t>
+        </tr>
+    </tbody>
     {% endfor %}
-</ul>
+  </table>
 {% endblock %}

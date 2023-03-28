@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from CarsApp.views import (index, VehiculosList, VehiculosDetail, VehiculosUpdate, VehiculosDelete, 
                            VehiculosCreate, VehiculosSearch, VehiculosMineList, Login, SignUp, Logout, PerfilCreate, PerfilUpdate,
-                           MensajeCreate, MensajeDelete, MensajeList)
+                           MensajeCreate, MensajeDelete, MensajeList, About)
 from django.conf import settings
 from django.conf.urls.static import static
     
@@ -40,6 +40,7 @@ urlpatterns = [
     path('Mensaje/Create', MensajeCreate.as_view(), name="mensaje-create"),
     path('Mensaje/<pk>/Delete', MensajeDelete.as_view(), name = "mensaje-delete"),
     path('Mensaje/List', MensajeList.as_view(), name = "mensaje-list"),
+    path('About/', About, name = "acerca-de-mi"),
 
 
 ]

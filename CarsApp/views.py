@@ -11,6 +11,9 @@ def index(request):
     vehiculo = vehiculos.objects.all().order_by("-fecha_creacion")
     return render(request,"CarsApp/index.html", {"vehiculos":vehiculo})
 
+def About(request):
+    return render(request, "CarsApp/about.html")
+
 class VehiculosList(ListView):
     model = vehiculos
     context_object_name = "vehiculos"
