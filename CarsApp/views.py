@@ -45,7 +45,7 @@ class VehiculosDelete(LoginRequiredMixin, PermitsOnlyOwners, DeleteView):
    
 class VehiculosCreate(LoginRequiredMixin, CreateView):
     model = vehiculos
-    success_url = reverse_lazy("vehiculos-mine")
+    success_url = reverse_lazy("index")
     fields = "__all__"
 
 class VehiculosSearch(ListView):

@@ -11,6 +11,10 @@
         <p class="lead">{{ vehiculo.modelo_de_vehiculo}}</p>
         <p class="lead">{{ vehiculo.descripcion}}</p>
         <p class="lead">{{ vehiculo.valor_vehiculo}}</p>
+        {% if user.is_authenticated and user.id == vehiculo.publicador.id %}
+            <a href="{% url 'vehiculos-update' vehiculo.id %}" type="button" class="btn btn-outline-primary btn-sm">Actualizar</a>
+            <a href="{% url 'vehiculos-delete' vehiculo.id %}" type="button" class="btn btn-outline-danger btn-sm">Borrar</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
