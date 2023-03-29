@@ -14,8 +14,10 @@ Sitio web de fanaticos de autos donde podran subir su vehiculo favorito ingresan
     Django 4.1.7            | Framework utilizado para la creación del sitio web.  
 ---
 
+### Link de video:
+- https://www.youtube.com/watch?v=BEY8zbj5dR8&t=16s&ab_channel=JuanPabloPeraltaJu%C3%A1rez
 
-### Implementaciones Tercera pre-entrega
+### Implementaciones
 ---
 - [x] Herencia de HTML.
 - [x] 3 clases en models.
